@@ -32,6 +32,14 @@
     "image": "img/1.png"
   },
   {
+    "id": "hat-christian",
+    "name": "Christian Hat",
+    "category": "Christian Apparel",
+    "price": 2390,
+    "description": "Ready-made faith-inspired hats, embroidered and ready to ship.",
+    "image": "img/6.png"
+  },
+  {
     "id": "shirt-fishing-sublimation",
     "name": "Fishing Performance Shirt — Sublimation",
     "category": "Fishing Shirts",
