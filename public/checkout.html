@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — OAKTOPUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-wrap">
+    <a href="/" class="logo-img">
+      <img src="img/logo-oaktopus.png" alt="OAKTOPUS" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="logo-text" style="display:none;">OAKTOPUS</span>
+    </a>
+  </div>
+</header>
+
+<main class="checkout-page">
+  <h1>Checkout</h1>
+  <p class="sub">Payments processed securely by Square.</p>
+
+  <div class="summary" id="summary"></div>
+
+  <label class="field-label" for="email">Email</label>
+  <input class="text-input" type="email" id="email" placeholder="you@email.com" required>
+
+  <label class="field-label">Card details</label>
+  <div id="card-container"></div>
+
+  <button class="pay-btn" id="payBtn" disabled>Loading payment form…</button>
+  <div id="statusMsg"></div>
+
+  <a class="back-link" href="/">&larr; Back to the shop</a>
+</main>
+
+<!-- Official Square SDK. Sandbox in tests; swap to https://web.squarecdn.com/v1/square.js in production -->
+<script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

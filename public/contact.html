@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — OAKTOPUS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav-wrap">
+      <a href="/" class="logo-img">
+        <img src="img/logo-oaktopus.png" alt="OAKTOPUS" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none;">OAKTOPUS</span>
+      </a>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/hat-builder.html">Hat Builder</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="utility">
+        <button class="utility-btn">🇺🇸 USD</button>
+        <button class="utility-btn" id="openCart">🛒 Cart <span class="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">Questions about custom orders, wholesale, or just want to say hey?</p>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <h3>We're here for you</h3>
+          <p>Whether you need help with a custom order, want to know about sizing, or just want to share your trail photos — we'd love to hear from you.</p>
+          <div class="contact-item"><span class="contact-icon">📧</span><div class="contact-item-text"><h4>Email</h4><p>hello@oaktopus.com</p></div></div>
+          <div class="contact-item"><span class="contact-icon">📍</span><div class="contact-item-text"><h4>Location</h4><p>Crafted in the USA</p></div></div>
+          <div class="contact-item"><span class="contact-icon">⏱️</span><div class="contact-item-text"><h4>Response time</h4><p>Within 24–48 hours</p></div></div>
+        </div>
+        <div>
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="field"><label for="c-name">Name</label><input type="text" id="c-name" placeholder="Your name"></div>
+              <div class="field"><label for="c-email">Email</label><input type="email" id="c-email" placeholder="your@email.com"></div>
+            </div>
+            <div class="field"><label for="c-subject">Subject</label><input type="text" id="c-subject" placeholder="Custom order, question, etc."></div>
+            <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" placeholder="Tell us what you need..."></textarea></div>
+            <button class="btn btn-primary" onclick="submitContact()" style="align-self:flex-start;">Send Message</button>
+            <div class="form-feedback" id="contact-feedback">✅ Message sent! We'll get back to you within 24–48 hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>STAY TRUE – STAY WILD. | © <span id="year"></span> OAKTOPUS. Crafted in the USA.</p>
+      <nav><a href="/about.html">About</a></nav>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function submitContact() {
+      const name = document.getElementById('c-name').value.trim();
+      const email = document.getElementById('c-email').value.trim();
+      const msg = document.getElementById('c-msg').value.trim();
+      if (!name || !email || !msg) {
+        alert('Please fill in name, email and message.');
+        return;
+      }
+      document.getElementById('contact-feedback').classList.add('success');
+      document.getElementById('c-name').value = '';
+      document.getElementById('c-email').value = '';
+      document.getElementById('c-subject').value = '';
+      document.getElementById('c-msg').value = '';
+    }
+  </script>
+</body>
+</html>

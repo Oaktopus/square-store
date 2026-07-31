@@ -1,0 +1,58 @@
+[
+  {
+    "id": "hat-trucker",
+    "name": "Trucker Cap",
+    "category": "Custom Hats",
+    "price": 2999,
+    "description": "Breathable mesh back, foam front, snap or velcro closure. Classic American fit.",
+    "image": "img/6.png"
+  },
+  {
+    "id": "hat-snapback",
+    "name": "Snapback",
+    "category": "Custom Hats",
+    "price": 3199,
+    "description": "Flat brim, structured crown, adjustable snap closure. Streetwear classic.",
+    "image": "img/2.png"
+  },
+  {
+    "id": "hat-dad",
+    "name": "Dad Hat",
+    "category": "Custom Hats",
+    "price": 2999,
+    "description": "Curved brim, unstructured crown, relaxed fit. Low-profile everyday wear.",
+    "image": "img/3.png"
+  },
+  {
+    "id": "hat-fivepanel",
+    "name": "Five Panel",
+    "category": "Custom Hats",
+    "price": 3399,
+    "description": "Five-panel construction, flat brim, canvas or twill. Modern outdoor look.",
+    "image": "img/1.png"
+  },
+  {
+    "id": "shirt-fishing",
+    "name": "Fishing Performance Shirt",
+    "category": "Fishing Shirts",
+    "price": 4499,
+    "description": "UV protection, quick-dry, built for sunrise to sunset on the water.",
+    "image": "img/4.png"
+  },
+  {
+    "id": "hoodie-faith",
+    "name": "Faith & Wild Hoodie",
+    "category": "Christian Apparel",
+    "price": 5999,
+    "description": "Heavy fleece hoodie, scripture-inspired design, built to last.",
+    "image": "img/5.png"
+  },
+  {
+    "id": "tumbler-40oz",
+    "name": "Oaktopus Tumbler 40oz",
+    "category": "Tumblers",
+    "price": 3999,
+    "description": "Double-wall stainless steel, copper finish, keeps it cold all day.",
+    "image": "img/3.png"
+  }
+]

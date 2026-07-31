@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hat Builder — OAKTOPUS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav-wrap">
+      <a href="/" class="logo-img">
+        <img src="img/logo-oaktopus.png" alt="OAKTOPUS" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none;">OAKTOPUS</span>
+      </a>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/hat-builder.html" class="active">Hat Builder</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="utility">
+        <button class="utility-btn">🇺🇸 USD</button>
+        <button class="utility-btn" id="openCart">🛒 Cart <span class="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Custom Hat Builder</h2>
+      <p class="section-sub">Design yours. We'll craft it.</p>
+
+      <!-- Stepper -->
+      <div class="stepper" id="stepper">
+        <div class="step-item active" data-step="1"><span class="step-num">1</span> Style &amp; Color</div>
+        <div class="step-item" data-step="2"><span class="step-num">2</span> Patch</div>
+        <div class="step-item" data-step="3"><span class="step-num">3</span> Text &amp; Review</div>
+      </div>
+
+      <div class="builder-wrap">
+
+        <!-- STEP 1: model + color -->
+        <div class="builder-step" id="step1">
+          <h3 class="step-title">Choose Your Base</h3>
+          <div class="option-grid" id="modelGrid"></div>
+          <h3 class="step-title" style="margin-top:32px;">Choose a Color</h3>
+          <p class="price-note">All colors shown in the photo below — pick your favorite.</p>
+          <div class="shelf-reference" id="shelfReference"></div>
+          <div class="color-grid" id="colorGrid"></div>
+          <button class="btn btn-primary next-btn" onclick="goStep(2)">Next: Patch</button>
+        </div>
+
+        <!-- STEP 2: patch -->
+        <div class="builder-step" id="step2" style="display:none;">
+          <h3 class="step-title">Choose Your Patch</h3>
+          <div class="option-grid" id="patchGrid"></div>
+          <div class="nav-btns">
+            <button class="btn btn-outline" onclick="goStep(1)">Back</button>
+            <button class="btn btn-primary" onclick="goStep(3)">Next: Text</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: text + review -->
+        <div class="builder-step" id="step3" style="display:none;">
+          <h3 class="step-title">Custom Text (optional)</h3>
+          <input type="text" id="customText" placeholder="e.g. STAY WILD" maxlength="24">
+          <p class="price-note">+$8.00 for custom text</p>
+
+          <h3 class="step-title" style="margin-top:32px;">Your Order</h3>
+          <div class="order-summary" id="orderSummary"></div>
+          <div class="price-live" id="livePrice">$29.90</div>
+          <p class="price-note">Free shipping on custom orders over $60</p>
+          <div class="nav-btns">
+            <button class="btn btn-outline" onclick="goStep(2)">Back</button>
+            <button class="btn btn-primary" id="addCustomHat">Add to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>STAY TRUE – STAY WILD. | © <span id="year"></span> OAKTOPUS. Crafted in the USA.</p>
+      <nav><a href="/about.html">About</a> · <a href="/contact.html">Contact</a></nav>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/hat-builder.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
