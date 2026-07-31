@@ -40,9 +40,12 @@
       <div class="contact-wrap">
         <div class="contact-info">
           <h3>We're here for you</h3>
-          <p>Whether you need help with a custom order, want to know about sizing, or just want to share your trail photos — we'd love to hear from you.</p>
-          <div class="contact-item"><span class="contact-icon">📧</span><div class="contact-item-text"><h4>Email</h4><p>hello@oaktopus.com</p></div></div>
-          <div class="contact-item"><span class="contact-icon">📍</span><div class="contact-item-text"><h4>Location</h4><p>Crafted in the USA</p></div></div>
+          <p>Whether you need help with a custom order, want to know about sizing, or just want to share your fishing photos — we'd love to hear from you.</p>
+          <div class="contact-item"><span class="contact-icon">📧</span><div class="contact-item-text"><h4>Email</h4><p>hello@oaktopus.store</p></div></div>
+          <div class="contact-item"><span class="contact-icon">📷</span><div class="contact-item-text"><h4>Instagram</h4><p>@Oaktopus.store</p></div></div>
+          <div class="contact-item"><span class="contact-icon">👍</span><div class="contact-item-text"><h4>Facebook</h4><p>Oaktopus.store</p></div></div>
+          <div class="contact-item"><span class="contact-icon">💬</span><div class="contact-item-text"><h4>WhatsApp</h4><p>Coming soon</p></div></div>
+          <div class="contact-item"><span class="contact-icon">📍</span><div class="contact-item-text"><h4>Location</h4><p>Anna, Texas</p></div></div>
           <div class="contact-item"><span class="contact-icon">⏱️</span><div class="contact-item-text"><h4>Response time</h4><p>Within 24–48 hours</p></div></div>
         </div>
         <div>
@@ -74,16 +77,14 @@
     function submitContact() {
       const name = document.getElementById('c-name').value.trim();
       const email = document.getElementById('c-email').value.trim();
+      const subject = document.getElementById('c-subject').value.trim();
       const msg = document.getElementById('c-msg').value.trim();
       if (!name || !email || !msg) {
         alert('Please fill in name, email and message.');
         return;
       }
-      document.getElementById('contact-feedback').classList.add('success');
-      document.getElementById('c-name').value = '';
-      document.getElementById('c-email').value = '';
-      document.getElementById('c-subject').value = '';
-      document.getElementById('c-msg').value = '';
+      const body = encodeURIComponent(`${msg}\n\n— ${name}\n${email}`);
+      window.location.href = `mailto:hello@oaktopus.store?subject=${encodeURIComponent(subject || 'Contact from OAKTOPUS site')}&body=${body}`;
     }
   </script>
 </body>
