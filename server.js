@@ -51,7 +51,7 @@ const TEXT_PRICE = 800;
 
 function itemPriceCents(product, options) {
   // Custom hats: the total is FIXED by the chosen patch, regardless of base model
-  if (options) {
+  if (options && options.patch) {
     let price = PATCH_PRICES[options.patch] || 0;
     if (options.text && options.text.trim()) price += TEXT_PRICE;
     return price;
