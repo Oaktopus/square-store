@@ -48,6 +48,14 @@
     "image": "img/5.png"
   },
   {
+    "id": "shirt-christian-dtf",
+    "name": "Christian Faith Tee — DTF Print",
+    "category": "Christian Apparel",
+    "price": 1990,
+    "description": "Faith-inspired designs on a classic fit tee. DTF print, your choice of design.",
+    "image": "img/5.png"
+  },
+  {
     "id": "tumbler-40oz",
     "name": "Oaktopus Tumbler 40oz",
     "category": "Tumblers",
