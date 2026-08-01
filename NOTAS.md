@@ -70,14 +70,30 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 - `/shop.html` catálogo com filtros
 - `/hat-builder.html` builder
 - `/about.html` história real (oak+topus, 10/10/24, Anna TX, blanks com etiqueta própria)
-- `/contact.html` contato real (email hello@oaktopus.store, IG/FB @Oaktopus.store, WhatsApp coming soon)
+- `/contact.html` contato real (email hello@oaktopus.store, telefone (818) 538-6001, IG/FB @Oaktopus.store)
+- `/shipping.html` Shipping & Policies (frete, devoluções, pedidos custom)
 - Rodapé com ícones de Instagram/Facebook em todas as páginas
 
+## SEO (feito em 31/07/2026)
+- Meta description + Open Graph + canonical em todas as páginas
+- Favicon: `public/img/favicon.svg` (O de octopus + folha de carvalho)
+- `public/sitemap.xml` (6 URLs) e `public/robots.txt`
+- Dados estruturados (JSON-LD Store + WebSite) no index.html
+- **Google Search Console**: domínio `oaktopus.store` verificado via DNS TXT (`google-site-verification=Lt8gukKc3q1EEBrUi7HHoThUKgyAYoKd-1P52xm24_g`), sitemap enviado, indexação da Home solicitada (30/07–31/07)
+- **Google Business Profile**: criado (OAKTOPUS, telefone (818) 538-6001, site, categoria bonés). Aguardando revisão do Google (dias a ~2 semanas)
+
+## Contato / Telefone
+- **Número comercial (Google Voice): (818) 538-6001** — usuário vai se mudar para a California, por isso código 818 (LA)
+- Número pessoal do usuário: (469) 235-2403 (usado só p/ verificação, NÃO colocar no site)
+- WhatsApp Business: usuário vai registrar o 818 no app (pessoal dele fica no WhatsApp normal)
+- Caller ID "OAKTOPUS": só via WhatsApp Business (grátis) ou serviços pagos (OpenPhone ~$20/mês) — Google Voice não permite customizar nome do caller ID
+
 ## Redes sociais
-- Footer: ícones IG + FB em todas as páginas
+- Footer: ícones IG + FB em todas as páginas (imagens próprias da marca: `img/icon-instagram.png` e `img/icon-facebook.png`, círculo 38px)
+- **Facebook**: link correto é `https://www.facebook.com/profile.php?id=61592572917689` (o @Oaktopus.store não abre) — já atualizado no site
 - Home: seção "Watch the Collection" (4 cards de vídeo com thumbnails em public/img/videos/, links atualmente para o perfil do Instagram)
 - **PENDENTE**: o usuário vai mandar os links específicos dos posts/reels do Instagram para trocar em cada card
-- YouTube/WhatsApp: ainda não existem (cards "coming soon")
+- YouTube/WhatsApp: WhatsApp Business em configuração com o 818; YouTube ainda não existe
 
 ## Vídeos
 - Origem: `J:\OAKTOPUS VIDEOS\shorts\...` (muitos clipes por modelo: crawfish, striped bass, mortal kombat, etc.)
@@ -88,7 +104,9 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 1. **[EM ANDAMENTO] Fotos reais**: o usuário está tirando fotos dos produtos (bonés por modelo/cor, shirts, tumblers). Ele colocará em `J:\OAKTOPUS WEBSITE\site 3\FOTOS\`. Depois: copiar para `public/img/`, comprimir com ffmpeg, atualizar hat-builder.js (modelos/cores) e products.json (imagens), publicar.
 2. **Square**: criar conta developer.squareup.com, configurar credenciais, trocar sandbox→produção.
 3. **Links do Instagram**: o usuário vai mandar os links específicos dos posts para os cards de vídeo.
-4. **YouTube/WhatsApp**: quando criar, adicionar nas redes.
+4. **Google Business Profile**: aguardando revisão/publicação (dias a ~2 semanas).
+5. **WhatsApp Business**: registrar o 818 no app; depois colocar link `wa.me/18185386001` no site.
+6. **YouTube**: quando criar, adicionar nas redes.
 
 ## Instalações no PC (se precisar recarregar PATH em sessão nova)
 - Node.js LTS 24, ffmpeg (Gyan), Git, GitHub CLI (gh) — instalados via winget
