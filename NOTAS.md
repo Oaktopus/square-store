@@ -102,11 +102,12 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 
 ## PENDENTES (próximos passos)
 1. **[EM ANDAMENTO] Fotos reais**: o usuário está tirando fotos dos produtos (bonés por modelo/cor, shirts, tumblers). Ele colocará em `J:\OAKTOPUS WEBSITE\site 3\FOTOS\`. Depois: copiar para `public/img/`, comprimir com ffmpeg, atualizar hat-builder.js (modelos/cores) e products.json (imagens), publicar.
-2. **Square**: criar conta developer.squareup.com, configurar credenciais, trocar sandbox→produção.
+2. **Square**: criar conta developer.squareup.com, depois adicionar `SQUARE_APPLICATION_ID`, `SQUARE_LOCATION_ID` e trocar `SQUARE_ACCESS_TOKEN` nas **env vars do Worker Cloudflare** (não mais no server/.env).
 3. **Links do Instagram**: o usuário vai mandar os links específicos dos posts para os cards de vídeo.
 4. **Google Business Profile**: aguardando revisão/publicação (dias a ~2 semanas).
 5. **WhatsApp Business**: registrar o 818 no app; depois colocar link `wa.me/18185386001` no site.
 6. **YouTube**: quando criar, adicionar nas redes.
+7. **Render**: usuário vai deletar o serviço `square-store` no dashboard.render.com (nada aponta mais pra lá; site 100% Cloudflare).
 
 ## Log de conversa — 31/07/2026 (sessão longa)
 - **Revisão ao vivo do site** (Playwright): Home, Shop (11 produtos + filtros), Hat Builder (fluxo completo Trucker→Navy→Embroidered→$29.90→Add to Cart) e mobile (390px) OK.
@@ -123,6 +124,15 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 - **Bug corrigido**: tag `<footer>` faltando no index.html.
 - **Namecheap**: login automático bloqueado por reCAPTCHA; usuário adicionou o TXT manualmente (feito).
 - Próximos: fotos reais, Square, links dos Reels, WhatsApp Business.
+
+## Log de conversa — 01/08/2026 (migração Cloudflare)
+- **Migração concluída: Render → Cloudflare.** GitHub = conta `Oaktopus` (email Glaquerf@hotmail.com).
+- **Cloudflare Worker `square-store`** com static assets + API entrypoint: `src/index.js` + `wrangler.jsonc` (assets = `public`, binding ASSETS). Deploy automático no `git push` pro main.
+- **APIs no Worker**: `/api/products` (11 produtos), `/api/config`, `/api/checkout` (Square via REST fetch, sem SDK Node). Endpoints 200.
+- **Dominio**: nameservers agora são **nadia.ns.cloudflare.com + cosmin.ns.cloudflare.com** (a troca na Namecheap quase deu errado — usuário salvou placeholders `xxx`/`yyy` que não existem; corrigido). Registros DNS preservados na Cloudflare: MX mx1/mx2.privateemail.com, TXT SPF + google-site-verification, CNAME mail/autodiscover/autoconfig, SRV _autodiscover._tcp, TXT DKIM `default._domainkey`. **Atenção: domínio ficou com redirect apex → www** (oaktopus.store → 301 → www.oaktopus.store).
+- **Env vars no Worker (Settings → Variables and secrets)**: `SQUARE_ENVIRONMENT=sandbox` + `SQUARE_ACCESS_TOKEN` (secret). `SQUARE_APPLICATION_ID`/`SQUARE_LOCATION_ID` **ainda não existem** (Square não criada) → site mostra "Square is not configured yet. Payments will be available soon." (checkout.js agora detecta placeholder).
+- **server.js/functions/ removidos** (substituídos por src/index.js + wrangler.jsonc). Render pode ser desligado.
+- Login GitHub descoberto na sessão: `Oaktopus` / Glaquerf@hotmail.com.
 
 ## Instalações no PC (se precisar recarregar PATH em sessão nova)
 - Node.js LTS 24, ffmpeg (Gyan), Git, GitHub CLI (gh) — instalados via winget
