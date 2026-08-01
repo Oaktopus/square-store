@@ -203,6 +203,9 @@ footer nav a { color: var(--muted); }
 .social-links { display: flex; gap: 10px; }
 .social-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(184,122,77,0.12); color: var(--copper); display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: background 0.2s, transform 0.2s; }
 .social-btn:hover { background: var(--copper); color: var(--bg); transform: translateY(-2px); }
+.social-btn img { width: 18px; height: 18px; display: block; }
+.social-card .big-icon { font-size: 2.4rem; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+.social-card .big-icon img { width: 46px; height: 46px; aspect-ratio: auto; object-fit: contain; display: block; margin-bottom: 0; }
 .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
 .social-card { background: var(--surface); border: 2px solid rgba(184,122,77,0.15); border-radius: var(--radius); padding: 24px; text-align: center; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; display: block; }
 .social-card:hover { border-color: var(--copper); transform: translateY(-2px); }
