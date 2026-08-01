@@ -1,17 +1,10 @@
 {
-  "name": "loja-square",
+  "name": "oaktopus-store",
   "version": "1.0.0",
-  "description": "Catalogo de produtos com checkout via Square Payments",
-  "main": "server.js",
-  "type": "commonjs",
+  "private": true,
+  "description": "OAKTOPUS store - static site + Cloudflare Pages Functions",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
-  },
-  "dependencies": {
-    "square": "^39.0.0",
-    "express": "^4.19.2",
-    "dotenv": "^16.4.5",
-    "cors": "^2.8.5"
+    "dev": "npx wrangler pages dev public",
+    "deploy": "npx wrangler pages deploy public"
   }
 }
