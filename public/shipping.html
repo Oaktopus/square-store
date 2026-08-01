@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping &amp; Policies — OAKTOPUS</title>
+  <meta name="description" content="Shipping times, returns and custom order policies for OAKTOPUS. Free US shipping on custom orders over $60. Made to order in Anna, Texas.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OAKTOPUS">
+  <meta property="og:title" content="Shipping &amp; Policies — OAKTOPUS">
+  <meta property="og:description" content="Shipping times, returns and custom order policies. Free US shipping on custom orders over $60.">
+  <meta property="og:url" content="https://www.oaktopus.store/shipping.html">
+  <meta property="og:image" content="https://www.oaktopus.store/img/hero-background.png">
+  <link rel="canonical" href="https://www.oaktopus.store/shipping.html">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav-wrap">
+      <a href="/" class="logo-img">
+        <img src="img/logo-oaktopus.png" alt="OAKTOPUS" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none;">OAKTOPUS</span>
+      </a>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('active')">☰</button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop.html">Shop</a></li>
+          <li><a href="/hat-builder.html">Hat Builder</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="utility">
+        <button class="utility-btn">🇺🇸 USD</button>
+        <button class="utility-btn" id="openCart">🛒 Cart <span class="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Shipping &amp; Policies</h2>
+      <p class="section-sub">The straight talk, no fine print games.</p>
+
+      <div class="about-wrap">
+        <div class="about-text">
+          <h3>Shipping</h3>
+          <p>Every OAKTOPUS piece is <strong>made to order</strong> in Anna, Texas. Custom hats leave our shop within <strong>48 hours</strong>; shirts and tumblers typically ship within <strong>2–4 business days</strong>.</p>
+          <p>US orders arrive in about <strong>3–7 business days</strong> after shipping. <strong>Free US shipping on custom orders over $60.</strong></p>
+          <p>International orders are shipped on request — <a href="/contact.html">contact us</a> for a quote before ordering.</p>
+
+          <h3 style="margin-top:32px;">Returns &amp; Exchanges</h3>
+          <p>If your item arrives damaged or is not what you ordered, <a href="/contact.html">email us</a> within <strong>14 days</strong> of delivery and we'll make it right — replacement or refund.</p>
+          <p>Because custom pieces are made specifically for you, personalized orders (hat builder, custom text, patches) can't be returned unless they're defective.</p>
+          <p>For eligible returns, items must be unworn and unwashed in original condition.</p>
+
+          <h3 style="margin-top:32px;">Custom Orders</h3>
+          <p>Custom hats are crafted by hand — colors may vary slightly from photos. We use premium blanks and add our own label, so what you get is built to last.</p>
+
+          <h3 style="margin-top:32px;">Payments</h3>
+          <p>Payments are processed securely by Square. We accept all major credit and debit cards.</p>
+
+          <h3 style="margin-top:32px;">Questions?</h3>
+          <p>Email <a href="mailto:hello@oaktopus.store">hello@oaktopus.store</a> — we answer within 24–48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>STAY TRUE – STAY WILD. | © <span id="year"></span> OAKTOPUS. Crafted in Texas.</p>
+      <div class="social-links">
+        <a class="social-btn" href="https://www.instagram.com/Oaktopus.store" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+        <a class="social-btn" href="https://www.facebook.com/Oaktopus.store" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+      </div>
+      <nav><a href="/about.html">About</a> · <a href="/contact.html">Contact</a></nav>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
