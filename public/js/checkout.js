@@ -59,8 +59,9 @@ async function initSquare() {
   const configRes = await fetch('/api/config');
   const config = await configRes.json();
 
-  if (!config.applicationId || !config.locationId) {
-    setStatus('err', 'Square is not configured yet. Set SQUARE_APPLICATION_ID and SQUARE_LOCATION_ID in the server .env file.');
+  const isPlaceholder = (v) => !v || v.includes('YOUR_');
+  if (isPlaceholder(config.applicationId) || isPlaceholder(config.locationId)) {
+    setStatus('err', 'Square is not configured yet. Payments will be available soon.');
     return;
   }
 
