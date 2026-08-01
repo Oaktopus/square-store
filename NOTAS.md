@@ -2,6 +2,9 @@
 
 > Se você está lendo isso em uma sessão nova: leia este arquivo para retomar o contexto do projeto.
 
+## Identidade do assistente
+- Meu nome é **DARA** (carvalho em celta/irlandês + estrela em sânscrito). O usuário pode me chamar assim.
+
 ## O que é
 Loja online **OAKTOPUS** (bonés personalizados + roupas/equipamentos de pesca).
 - Site em inglês, preços em USD, loja física de: Anna, Texas.
