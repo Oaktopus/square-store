@@ -108,6 +108,22 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 5. **WhatsApp Business**: registrar o 818 no app; depois colocar link `wa.me/18185386001` no site.
 6. **YouTube**: quando criar, adicionar nas redes.
 
+## Log de conversa — 31/07/2026 (sessão longa)
+- **Revisão ao vivo do site** (Playwright): Home, Shop (11 produtos + filtros), Hat Builder (fluxo completo Trucker→Navy→Embroidered→$29.90→Add to Cart) e mobile (390px) OK.
+- **SEO implementado**: meta description/OG/canonical em todas as páginas, favicon.svg, sitemap.xml, robots.txt, JSON-LD Store+WebSite.
+- **Google Search Console**: domínio `oaktopus.store` verificado via TXT; sitemap enviado; indexação da Home solicitada. **Status: OK.**
+- **Google Business Profile**: criado com descrição (sem telefone/URL — regra do Google), username "Oaktopus". Google Workspace foi oferecido e **recusado** (não é necessário). **Status: aguardando revisão.**
+- **Google Voice**: número comercial **(818) 538-6001** escolhido (usuário vai se mudar para a **California**, por isso 818 = LA). Número pessoal (469) 235-2403 NÃO deve ir para o site.
+- **WhatsApp Business**: usuário vai instalar o app separado do WhatsApp pessoal e registrar o 818. Quer caller ID "OAKTOPUS" — explicado que só WhatsApp Business (grátis) ou serviço pago (OpenPhone). **Status: pendente de registro.**
+- **Ícones sociais**: trocados emojis 📷👍 por fotos da marca (PNG comprimidos de 1MB→~78KB, circulares 38px/64px). Teve inversão FB/IG corrigida.
+- **Facebook**: link corrigido para `https://www.facebook.com/profile.php?id=61592572917689`.
+- **Rodapé**: "Crafted in Texas." em todas as páginas (substituiu "Crafted in the USA").
+- **Página Shipping & Policies** criada e linkada no rodapé (frete, devoluções, pedidos custom).
+- **Subtítulo Home**: "See how we do it — tap to watch on Instagram."
+- **Bug corrigido**: tag `<footer>` faltando no index.html.
+- **Namecheap**: login automático bloqueado por reCAPTCHA; usuário adicionou o TXT manualmente (feito).
+- Próximos: fotos reais, Square, links dos Reels, WhatsApp Business.
+
 ## Instalações no PC (se precisar recarregar PATH em sessão nova)
 - Node.js LTS 24, ffmpeg (Gyan), Git, GitHub CLI (gh) — instalados via winget
 - Em sessão nova do PowerShell: `$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")`
