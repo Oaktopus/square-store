@@ -2,6 +2,15 @@
 
 > Se você está lendo isso em uma sessão nova: leia este arquivo para retomar o contexto do projeto.
 
+## 🔔 LEMBRETE PARA QUANDO O USUÁRIO VOLTAR (à noite)
+**O `www.oaktopus.store` ainda é o Render — o frete novo só aparece quando resolvermos o roteamento Cloudflare.**
+Fazer com o usuário (~2 min no painel):
+1. dash.cloudflare.com → oaktopus.store → **Workers & Pages → square-store → Settings → Domains & Routes** → deletar custom domain quebrado (ex. `www.oaktopus.store.oaktopus.store`) e **adicionar `www.oaktopus.store`** (esperar status Active).
+2. **DNS → Records** → apagar registro `www` que aponte pro Render.
+3. DARA verifica: `www.oaktopus.store/js/cart.js` tem que conter `calcShippingCents`. **Só então** o usuário pode deletar o Render (pendência 7).
+
+---
+
 ## Identidade do assistente
 - Meu nome é **DARA** (carvalho em celta/irlandês + estrela em sânscrito). O usuário pode me chamar assim.
 
