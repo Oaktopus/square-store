@@ -20,6 +20,17 @@
     renderCart();
   }
 
+  // Flat $5.50 US shipping; FREE when the order has 3+ hats.
+  function hatCount(cartItems) {
+    return Object.keys(cartItems).reduce((sum, id) => {
+      if (id.startsWith('hat-')) return sum + cartItems[id].qty;
+      return sum;
+    }, 0);
+  }
+  function calcShippingCents(cartItems) {
+    return hatCount(cartItems) >= 3 ? 0 : 550;
+  }
+
   function itemPrice(p, options) {
     // Custom hats: fixed total based on the chosen patch
     if (options && options.patch) {
@@ -71,6 +82,10 @@
     if (ids.length === 0) {
       container.innerHTML = '<div class="drawer-empty">Your cart is empty.</div>';
       document.getElementById('drawerTotal').textContent = fmt(0);
+      const shipEl = document.getElementById('drawerShip');
+      if (shipEl) shipEl.textContent = fmt(0);
+      const hintEl = document.getElementById('shipHint');
+      if (hintEl) hintEl.textContent = '';
       if (checkoutBtn) checkoutBtn.disabled = true;
       return;
     }
@@ -106,7 +121,16 @@
       })
       .join('');
 
-    document.getElementById('drawerTotal').textContent = fmt(total);
+    const shipping = calcShippingCents(cart);
+    document.getElementById('drawerTotal').textContent = fmt(total + shipping);
+    const shipEl = document.getElementById('drawerShip');
+    if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : fmt(shipping);
+    const hintEl = document.getElementById('shipHint');
+    if (hintEl) {
+      const hats = hatCount(cart);
+      hintEl.textContent =
+        hats > 0 && hats < 3 ? `Add ${3 - hats} more hat${3 - hats > 1 ? 's' : ''} for free shipping!` : '';
+    }
     if (checkoutBtn) checkoutBtn.disabled = false;
 
     container.querySelectorAll('.qty-btn').forEach((btn) => {
@@ -139,6 +163,8 @@
         </div>
         <div class="drawer-items" id="drawerItems"></div>
         <div class="drawer-foot">
+          <div class="drawer-ship"><span>Shipping</span><span id="drawerShip">$0.00</span></div>
+          <div class="ship-hint" id="shipHint"></div>
           <div class="drawer-total"><span>Total</span><span id="drawerTotal">$0.00</span></div>
           <button class="checkout-btn" id="goCheckout" disabled>Checkout</button>
         </div>
@@ -179,6 +205,7 @@
     itemPrice,
     getItem,
     fmt,
+    calcShippingCents,
   };
 
   document.addEventListener('DOMContentLoaded', () => {

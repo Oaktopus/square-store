@@ -60,6 +60,15 @@ async function handleApi(request, env) {
       }
       if (totalCents <= 0) return json({ error: 'Invalid order total.' }, 400);
 
+      // Flat $5.50 US shipping; FREE when the order has 3+ hats.
+      let hats = 0;
+      for (const item of cart) {
+        if (item.id && item.id.startsWith('hat-')) {
+          hats += Math.max(1, parseInt(item.quantidade, 10) || 1);
+        }
+      }
+      totalCents += hats >= 3 ? 0 : 550;
+
       const url =
         env.SQUARE_ENVIRONMENT === 'production' ? SQUARE_PRODUCTION : SQUARE_SANDBOX;
 

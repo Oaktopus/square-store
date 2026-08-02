@@ -50,9 +50,22 @@ async function renderSummary() {
         : '';
       return `<div class="summary-row"><span>${p.name} × ${qty}${optText ? `<br><span class="opt">${optText}</span>` : ''}</span><span>${fmt(price * qty)}</span></div>`;
     })
-    .join('') + `<div class="summary-row total"><span>Total</span><span>${fmt(total)}</span></div>`;
+    .join('');
+
+  const shipping = calcShippingCents(cart);
+  summary.innerHTML += `<div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? 'FREE' : fmt(shipping)}</span></div>`;
+  summary.innerHTML += `<div class="summary-row total"><span>Total</span><span>${fmt(total + shipping)}</span></div>`;
 
   return total;
+}
+
+// Mirrors the server shipping rule: flat $5.50, free with 3+ hats.
+function calcShippingCents(cartItems) {
+  let hats = Object.keys(cartItems).reduce((sum, id) => {
+    if (id.startsWith('hat-')) return sum + cartItems[id].qty;
+    return sum;
+  }, 0);
+  return hats >= 3 ? 0 : 550;
 }
 
 async function initSquare() {
