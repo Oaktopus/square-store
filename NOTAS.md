@@ -15,8 +15,9 @@ Loja online **OAKTOPUS** (bonés personalizados + roupas/equipamentos de pesca).
 ## Local do projeto
 - Código: `J:\OAKTOPUS WEBSITE\site 3\square-store\`
 - Repositório GitHub: `https://github.com/Oaktopus/square-store` (branch `main`)
-- Hospedagem: **Render** (grátis) — site live em `https://square-store.onrender.com`
-- Domínio: `oaktopus.store` / `www.oaktopus.store` (Namecheap, DNS apontado para o Render: A record 216.24.57.1 + CNAME www → square-store.onrender.com)
+- Hospedagem: **Cloudflare Worker `square-store`** — `https://square-store.glaquerf.workers.dev`
+- Domínio: `oaktopus.store` / `www.oaktopus.store` (nameservers Cloudflare nadia/cosmin)
+- **⚠️ PENDENTE (02/08): roteamento do domínio ainda vai pro Render.** `www.oaktopus.store` continua servido pelo Render (headers `x-render-origin-server: Render`, API antiga). O Worker está atualizado, mas o custom domain do Worker não está roteando o tráfego. FIX: no painel Cloudflare, Workers & Pages → square-store → Settings → Domains & Routes → deletar custom domain quebrado (ex. `www.oaktopus.store.oaktopus.store`) e adicionar `www.oaktopus.store`; depois apagar registro DNS `www` que aponte pro Render. Verificar no fim.
 - E-mail da loja: `hello@oaktopus.store` (Namecheap Private Email, webmail em privateemail.com)
 
 ## Deploy
@@ -108,6 +109,7 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 5. **WhatsApp Business**: registrar o 818 no app; depois colocar link `wa.me/18185386001` no site.
 6. **YouTube**: quando criar, adicionar nas redes.
 7. **Render**: usuário vai deletar o serviço `square-store` no dashboard.render.com (nada aponta mais pra lá; site 100% Cloudflare).
+8. **[HOJE À NOITE] Roteamento do domínio**: `www.oaktopus.store` ainda serve o Render (ver aviso no topo). Corrigir custom domain do Worker no painel Cloudflare; NÃO deletar o Render antes disso.
 
 ## Log de conversa — 31/07/2026 (sessão longa)
 - **Revisão ao vivo do site** (Playwright): Home, Shop (11 produtos + filtros), Hat Builder (fluxo completo Trucker→Navy→Embroidered→$29.90→Add to Cart) e mobile (390px) OK.
@@ -133,6 +135,11 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 - **Env vars no Worker (Settings → Variables and secrets)**: `SQUARE_ENVIRONMENT=sandbox` + `SQUARE_ACCESS_TOKEN` (secret). `SQUARE_APPLICATION_ID`/`SQUARE_LOCATION_ID` **ainda não existem** (Square não criada) → site mostra "Square is not configured yet. Payments will be available soon." (checkout.js agora detecta placeholder).
 - **server.js/functions/ removidos** (substituídos por src/index.js + wrangler.jsonc). Render pode ser desligado.
 - Login GitHub descoberto na sessão: `Oaktopus` / Glaquerf@hotmail.com.
+
+## Log de conversa — 02/08/2026 (frete + descoberta do roteamento)
+- **Frete implementado** (commit `60741f6`): flat **$5.50** em pedidos com 1-2 bonés; **grátis** com 3+ bonés. Regra espelhada em 3 lugares: `cart.js` (linha "Shipping" no drawer + dica "Add X more hat for free shipping"), `checkout.js` (resumo com Shipping + Total) e `src/index.js` (total cobrado no servidor). `shipping.html` atualizado (texto + meta). Deploy feito.
+- **BUG de teste notado**: `options.patch` só funciona com valores 'Embroidered'/'Laser Engraved'/'UV Printed Leatherette' (PATCH_PRICES). Testar com 'Fishing Cross' dá $0.00 — não é bug do site.
+- **⚠️ DESCOBERTA CRÍTICA**: `www.oaktopus.store` **AINDA é o Render** (headers `x-render-origin-server: Render`, `X-Powered-By: Express`, JS velho sem frete, API `/api/config` retorna só `{"environment":"sandbox"}`). O Worker `square-store` está atualizado (testado em `square-store.glaquerf.workers.dev` tem o frete). A migração Cloudflare nunca ficou ativa no domínio — o custom domain do Worker não está roteando. Render ainda vivo em `square-store.onrender.com` (200). **Resolver à noite no painel Cloudflare (ver aviso no topo + pendência 8). Não deletar o Render antes.**
 
 ## Instalações no PC (se precisar recarregar PATH em sessão nova)
 - Node.js LTS 24, ffmpeg (Gyan), Git, GitHub CLI (gh) — instalados via winget
