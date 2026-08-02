@@ -150,6 +150,15 @@ Token GitHub: salvo no Gerenciador de Credenciais do Windows (helper: manager).
 - **BUG de teste notado**: `options.patch` só funciona com valores 'Embroidered'/'Laser Engraved'/'UV Printed Leatherette' (PATCH_PRICES). Testar com 'Fishing Cross' dá $0.00 — não é bug do site.
 - **⚠️ DESCOBERTA CRÍTICA**: `www.oaktopus.store` **AINDA é o Render** (headers `x-render-origin-server: Render`, `X-Powered-By: Express`, JS velho sem frete, API `/api/config` retorna só `{"environment":"sandbox"}`). O Worker `square-store` está atualizado (testado em `square-store.glaquerf.workers.dev` tem o frete). A migração Cloudflare nunca ficou ativa no domínio — o custom domain do Worker não está roteando. Render ainda vivo em `square-store.onrender.com` (200). **Resolver à noite no painel Cloudflare (ver aviso no topo + pendência 8). Não deletar o Render antes.**
 
+## 🎙️ VOZ no opencode (configurado em 02/08/2026)
+- **Plugin**: `@renjfk/opencode-voice` v0.6.0, instalado LOCALMENTE (patcheado) em `C:\Users\jeff\.opencode-voice\plugin\opencode-voice\` e carregado via `C:\Users\jeff\.config\opencode\tui.json` (plugin local, não npm).
+- **Binários** (dirs no PATH do usuário): `sox`/`play` (`C:\Users\jeff\.opencode-voice\bin\`, copiados de sox_ng via winget), `whisper-cli` (`...\whisper\`), `piper` (`...\piper\`).
+- **Modelos**: whisper `ggml-large-v3-turbo-q5_0.bin` em `~\.local\share\whisper-cpp\`; voz **PT-BR** `pt_BR-faber-medium.onnx` (+ .json) em `~\.local\share\piper-voices\` (essa é a voz "Dara").
+- **Patches feitos no plugin** (ficam na cópia local, NÃO no npm): voz padrão = PT-BR ("Dara"), `piperOnPath` aceita `.exe`, fallback fala texto cru se LLM offline, `pkill` ignorado no Windows.
+- **Uso**: `Ctrl+R` grava/para (transcreve); `Ctrl+X R` transcreve e envia; `Ctrl+X S` lê a última resposta em voz; `Ctrl+X V` liga/desliga fala automática; `Esc` para.
+- **Sem chave de IA ainda**: endpoint é placeholder (`127.0.0.1:9`) → fala funciona cru. Se o usuário arranjar chave (Anthropic/OpenAI/OpenRouter/Groq), trocar em `tui.json` (`endpoint` + `apiKeyEnv`) p/ texto natural.
+- **IMPORTANTE**: plugin só carrega após REABRIR o opencode em terminal novo (PATH também).
+
 ## Instalações no PC (se precisar recarregar PATH em sessão nova)
 - Node.js LTS 24, ffmpeg (Gyan), Git, GitHub CLI (gh) — instalados via winget
 - Em sessão nova do PowerShell: `$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")`
